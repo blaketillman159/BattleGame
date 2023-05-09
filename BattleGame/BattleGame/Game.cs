@@ -37,6 +37,7 @@ namespace BattleGame
             SurvivorBack(attacker);
             SurvivorBack(defender);
             CleaningUp();
+            Winner();
         }
 
         /// <summary>
@@ -49,10 +50,15 @@ namespace BattleGame
                 var winner = players.First();
                 Console.WriteLine($"[{winner.Id}] {winner.GetType().Name} Win!");
             }
-            if(players.Count < 1)
+            else if(players.Count < 1)
             {
                 Console.WriteLine("Everybody died :(");
             }
+            else
+            {
+                Console.WriteLine("Next round? Press..");
+            }
+
         }
 
         /// <summary>

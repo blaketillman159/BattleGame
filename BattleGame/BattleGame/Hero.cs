@@ -21,14 +21,13 @@ namespace BattleGame
             get { return health; }
             set {
                 if (health != value){ health = value; }
-                if(health <= (MaxHealt / 4))
+                if(health <= (MaxHealt / 4) && IsAlive)
                 {
                     Console.WriteLine($"[{Id}] {this.GetType().Name} Died");
                     IsAlive = false;
                 }
             }
         }
-
 
         public Hero() { 
             Id = new Random().Next();
@@ -84,8 +83,11 @@ namespace BattleGame
         /// </summary>
         internal void Die()
         {
-            IsAlive = false;
-            Console.WriteLine($"[{Id}] {this.GetType().Name} died");
+            if (IsAlive)
+            {
+                IsAlive = false;
+                Console.WriteLine($"[{Id}] {this.GetType().Name} Died");
+            }
         }
     }
 }
